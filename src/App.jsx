@@ -1,33 +1,11 @@
-import { useReducer } from 'react'
-import './App.css'
+import { Provider } from "react-redux";
+import AppRouter from "./routes/AppRouter";
+import store from "./store/store"
 
-const initialCount = { count: 0 }
-
-const countReducer = ( state, action ) => {
-  switch(action.type) {
-    case 'increment':
-      return {...state, count: state.count + 1}
-    case 'decrement': 
-      return {...state, count: state.count - 1}
-    case 'reset':
-      return {...state, count: 0}
-    default:
-      return state
-  }
-}
-
-function App() {
-  const [countState, dispatch] = useReducer(countReducer, initialCount);
-
-  return (
-    <>
-      <h1>WorkFlow System UI</h1>
-      <p>Count: {countState.count}</p>
-      <button type='button' onClick={() => dispatch({type: 'increment'})}>INC</button>
-      <button type='button' onClick={() => dispatch({type: 'decrement'})}>DEC</button>
-      <button type='button' onClick={() => dispatch({type: 'reset'})}>RESET</button>
-    </>
-  )
-}
+const App = () => (
+  <Provider store = {store}>    {/* provider for redux store */}
+    <AppRouter/>                {/* BrowserRouter applied */}
+  </Provider>
+);
 
 export default App
