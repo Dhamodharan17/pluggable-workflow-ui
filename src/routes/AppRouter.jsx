@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../views/Login";
+import AuthPage from "../views/Auth";
 import ProtectedRoute from "./ProtectedRoute";
 import Home from "../views/Home";
 
@@ -8,7 +8,7 @@ const AppRouter = () => (
     <BrowserRouter>
         <Routes>
             {/* Public routes */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<AuthPage />} />
 
             {/* Protected routes */}
             <Route element={<ProtectedRoute />} >

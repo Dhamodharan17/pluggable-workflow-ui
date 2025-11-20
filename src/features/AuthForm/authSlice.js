@@ -31,11 +31,18 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {   // methods to use on state
-        logout(state){
+        logout: (state) => {
             state.user = null;
             state.token = null;
             localStorage.removeItem("token");
             localStorage.removeItem("user");
+        },
+        login: (state, action) => {
+            const { email, password } = action.payload;
+            console.log("email:", email);
+            console.log("password:",password);
+            state.user = "User Sample";
+            state.token = "adsmakfnbeuvlanlin25avdv52av6dva6v";
         }
     },
 
@@ -63,7 +70,7 @@ const authSlice = createSlice({
 });
 
 
-export const {logout} = authSlice.actions;  // action functions for state manipulation
+export const {logout, login} = authSlice.actions;  // action functions for state manipulation
 export default authSlice.reducer;   // reducer for store
 
 
